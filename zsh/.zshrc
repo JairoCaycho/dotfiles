@@ -9,7 +9,7 @@ HISTSIZE=1000
 SAVEHIST=10000
 setopt beep
 unsetopt autocd
-bindkey -e
+bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/chairuz/.zshrc'
@@ -26,7 +26,15 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 export FZF_CTRL_R_OPTS="--height 40% --layout=reverse --border --info=inline --prompt='Hist > '"
-
+bindkey '^F' fzf-file-widget
+autoload -Uz fzf-file-widget
 
 # Initialize Starship
 eval "$(starship init zsh)"
+
+# Aliases
+
+alias ls='eza'
+
+# Created by `pipx` on 2025-06-09 13:53:03
+export PATH="$PATH:/home/chairuz/.local/bin"
