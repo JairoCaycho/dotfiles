@@ -88,7 +88,7 @@ return {
           suffix = suffix .. string.char(math.random(65, 90))
         end
       end
-      return tostring(os.time()) .. "-" .. suffix
+      return suffix
     end,
 
     -- Optional, customize how note file names are generated given the ID, target directory, and title.
@@ -98,6 +98,35 @@ return {
       -- This is equivalent to the default behavior.
       local path = spec.dir / tostring(spec.id)
       return path:with_suffix(".md")
+    end,
+
+    -- Optional, alternatively you can customize the frontmatter data.
+    ---@return table
+    note_frontmatter_func = function(note)
+      -- Add the title of the note as an alias.
+      if note.title then
+        note:add_alias(note.title)
+      end
+
+      -- add date to note metadata
+      -- note:add_metadata("date", os.date("%Y-%m-%dT%H:%M:%S%z"))
+
+      local out = {
+        id = note.id,
+        aliases = note.aliases,
+        date = os.date("%Y-%m-%dT%H:%M:%S%z"),
+        tags = note.tags,
+      }
+
+      -- `note.metadata` contains any manually added fields in the frontmatter.
+      -- So here we just make sure those fields are kept in the frontmatter.
+      if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+        for k, v in pairs(note.metadata) do
+          out[k] = v
+        end
+      end
+
+      return out
     end,
   },
 }
