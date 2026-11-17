@@ -50,6 +50,4 @@ fi
 export GPG_TTY=$(tty)
 
 # Load private environment variables if the file exists
-if [[ -f ~/.zshrc.local ]]; then
-    source ~/.zshrc.local
-fi
+[[ -f ~/.config/.zshrc.local ]] && source ~/.config/.zshrc.local

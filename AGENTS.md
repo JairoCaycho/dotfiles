@@ -25,11 +25,11 @@ Since this is a dotfiles repository, there are no traditional "build" or "test" 
 ## Gotchas
 - **Vi Mode**: Zsh is configured with `bindkey -v`.
 - **Ghostty Slowness**: An `async-backend = epoll` fix is applied in the Ghostty config for Hyprland compatibility.
-- **Hardcoded Keys**: `.zshrc` contains an exported `GEMINI_API_KEY`. Avoid modifying or exposing this further.
-- **Input Overrides**: Changes to mouse/keyboard settings should be made in `hypr/input.lua` within the provided `hl.config` blocks.
+- **Sensitive Keys**: `.zshrc` contains an exported `GEMINI_API_KEY`. Avoid modifying or exposing this further.
+- **Input Overrides**: Mouse/keyboard settings should only be changed in `hypr/input.lua` within the provided `hl.config` blocks.
 
 ## Development Workflow
 1. Modify configuration files.
-2. Changes to `starship.toml` and `ghostty/config` are usually picked up immediately or on next terminal launch.
+2. Changes to `starship.toml` and `ghostty/config` are usually picked up immediately or on the next terminal launch.
 3. Changes to `.zshrc` require `source ~/.zshrc`.
 4. Changes to `hypr/input.lua` require a Hyprland reload.

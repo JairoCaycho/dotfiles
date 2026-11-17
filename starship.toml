@@ -22,14 +22,13 @@ format = """\
   $shell\
   $cmd_duration\
   $os\
-  $time\
   $line_break\
   $jobs\
   $character\
   """
-right_format = """\
-  $memory_usage\
-  """
+# right_format = """\
+#   $memory_usage\
+#   """
 
 [palettes]
 
@@ -1271,9 +1270,9 @@ detect_folders = [".metals"]
 
 [shell]
 format = "[$indicator]($style) "
-bash_indicator = "bsh"
+bash_indicator = "$"
 fish_indicator = "fsh"
-zsh_indicator = "zsh"
+zsh_indicator = "%"
 powershell_indicator = "psh"
 ion_indicator = "ion"
 elvish_indicator = "esh"
@@ -1395,7 +1394,7 @@ detect_folders = []
 
 [username]
 detect_env_vars = []
-format = "[$user]($style) in "
+format = "[$user]($style) at "
 style_root = "red bold"
 style_user = "green bold"
 show_always = true
